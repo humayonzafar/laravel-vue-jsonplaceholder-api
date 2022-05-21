@@ -324,6 +324,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_debounce__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(vue_debounce__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _utilities_Loading__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utilities/Loading */ "./resources/js/components/utilities/Loading.vue");
 /* harmony import */ var _composables_favorite__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../composables/favorite */ "./resources/js/composables/favorite.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../constants */ "./resources/js/constants/index.js");
+
 
 
 
@@ -362,7 +364,8 @@ __webpack_require__.r(__webpack_exports__);
         photos = _getPhotos.photos,
         totalPhotosCount = _getPhotos.totalPhotosCount,
         isFetchingPhotos = _getPhotos.isFetchingPhotos,
-        fetchPhotos = _getPhotos.fetchPhotos;
+        fetchPhotos = _getPhotos.fetchPhotos,
+        showOnlyFavoriteImages = _getPhotos.showOnlyFavoriteImages;
 
     var pages = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(function () {
       return Math.ceil(totalPhotosCount.value / limit.value);
@@ -378,9 +381,9 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
       fetchPhotos(start.value, limit.value, search.value);
-    }, '600ms');
+    }, '800ms');
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(function () {
-      return [limit.value, search.value];
+      return [limit.value, search.value, showOnlyFavoriteImages.value];
     }, function () {
       start.value = 1;
       fetchFilteredRecords();
@@ -390,6 +393,18 @@ __webpack_require__.r(__webpack_exports__);
     }, function () {
       fetchFilteredRecords();
     });
+
+    var resetFilters = function resetFilters() {
+      start.value = _constants__WEBPACK_IMPORTED_MODULE_9__.JsonPlaceHolderApiDefaultValues.START;
+      limit.value = _constants__WEBPACK_IMPORTED_MODULE_9__.JsonPlaceHolderApiDefaultValues.LIMIT;
+      search.value = _constants__WEBPACK_IMPORTED_MODULE_9__.JsonPlaceHolderApiDefaultValues.SEARCH;
+      _router__WEBPACK_IMPORTED_MODULE_2__["default"].push({
+        path: '/',
+        query: {}
+      });
+      showOnlyFavoriteImages.value = false;
+    };
+
     fetchPhotos(start.value, limit.value, search.value);
     (0,_composables_favorite__WEBPACK_IMPORTED_MODULE_8__.fetchUserFavoriteImages)();
     return {
@@ -399,7 +414,9 @@ __webpack_require__.r(__webpack_exports__);
       totalPhotosCount: totalPhotosCount,
       pages: pages,
       search: search,
-      isFetchingPhotos: isFetchingPhotos
+      isFetchingPhotos: isFetchingPhotos,
+      showOnlyFavoriteImages: showOnlyFavoriteImages,
+      resetFilters: resetFilters
     };
   }
 });
@@ -532,19 +549,23 @@ __webpack_require__.r(__webpack_exports__);
     photo: {
       type: Object,
       required: true
+    },
+    showLikeButton: {
+      type: Boolean,
+      "default": true
     }
   },
   components: {},
   setup: function setup() {
     var _favoriteImages = (0,_composables_favorite__WEBPACK_IMPORTED_MODULE_1__.favoriteImages)(),
-        getFavoriteImageIds = _favoriteImages.getFavoriteImageIds,
+        favoriteImageIds = _favoriteImages.favoriteImageIds,
         loading = _favoriteImages.loading,
         toggleFavoriteImage = _favoriteImages.toggleFavoriteImage;
 
     return {
       isAuthenticated: _composables_auth__WEBPACK_IMPORTED_MODULE_0__.isAuthenticated,
       loading: loading,
-      getFavoriteImageIds: getFavoriteImageIds,
+      favoriteImageIds: favoriteImageIds,
       toggleFavoriteImage: toggleFavoriteImage
     };
   }
@@ -646,16 +667,22 @@ var _hoisted_1 = /*#__PURE__*/_withScopeId(function () {
 });
 
 var _hoisted_2 = {
-  "class": "flex justify-end mb-2"
+  "class": "flex justify-between mb-2 flex-wrap gap-1"
 };
 var _hoisted_3 = {
-  "for": "search"
+  "class": "justify-center items-center flex gap-1"
 };
 var _hoisted_4 = {
+  "class": "flex justify-end mb-2 flex-wrap gap-1"
+};
+var _hoisted_5 = {
+  "for": "search"
+};
+var _hoisted_6 = {
   "for": "limit"
 };
 
-var _hoisted_5 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_7 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
     value: 10
   }, "10", -1
@@ -663,7 +690,7 @@ var _hoisted_5 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_6 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_8 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
     value: 25
   }, "25", -1
@@ -671,7 +698,7 @@ var _hoisted_6 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_7 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_9 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
     value: 50
   }, "50", -1
@@ -679,18 +706,26 @@ var _hoisted_7 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_8 = [_hoisted_5, _hoisted_6, _hoisted_7];
-var _hoisted_9 = {
+var _hoisted_10 = [_hoisted_7, _hoisted_8, _hoisted_9];
+var _hoisted_11 = {
+  "for": "favorite",
+  "class": "justify-center items-center flex gap-1 text-md text-gray-600 leading-4 text-center"
+};
+
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" List all favorite images ");
+
+var _hoisted_13 = {
   "class": "grid gap-8 justify-center boothcards-grid px-4 mx-auto pb-16 mt-4"
 };
-var _hoisted_10 = {
+var _hoisted_14 = {
+  key: 0,
   "class": "flex w-full pb-5 justify-center mt-auto"
 };
-var _hoisted_11 = {
+var _hoisted_15 = {
   key: 1
 };
 
-var _hoisted_12 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_16 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
     "class": "text-center font-bold mt-4"
   }, "No records found...!", -1
@@ -698,8 +733,8 @@ var _hoisted_12 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_13 = [_hoisted_12];
-var _hoisted_14 = {
+var _hoisted_17 = [_hoisted_16];
+var _hoisted_18 = {
   key: 2,
   "class": "absolute inset-0 flex justify-center items-center max-w-md mx-auto"
 };
@@ -710,8 +745,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_loading = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("loading");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    type: "button",
+    onClick: _cache[0] || (_cache[0] = function () {
+      return $setup.resetFilters && $setup.resetFilters.apply($setup, arguments);
+    }),
+    "class": "text-center px-4 py-2 bg-gray-900 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ml-3 disabled:opacity-50 disabled:cursor-not-allowed"
+  }, " Reset Filters ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return $setup.search = $event;
     }),
     type: "search",
@@ -723,28 +764,40 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.search, void 0, {
     trim: true
-  }]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
-    "class": "text-sm font-medium text-gray-900 rounded-md bg-gray py-2 px-2 bg-white border border-gray-700 mx-4",
-    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+  }]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["text-sm font-medium text-gray-900 rounded-md bg-gray py-2 px-2 bg-white border border-gray-700 mx-4", {
+      'opacity-25 cursor-not-allowed': $setup.showOnlyFavoriteImages
+    }]),
+    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
       return $setup.limit = $event;
     }),
     id: "limit"
-  }, _hoisted_8, 512
+  }, _hoisted_10, 2
+  /* CLASS */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.limit]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "checkbox",
+    id: "favorite",
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+      return $setup.showOnlyFavoriteImages = $event;
+    }),
+    "class": "focus:ring-boothy-dark-blue-300 h-4 w-4 text-boothy-dark-blue-300 border-gray-300 rounded"
+  }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.limit]])])]), !$setup.isFetchingPhotos && $setup.photos.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $setup.showOnlyFavoriteImages]]), _hoisted_12])])]), !$setup.isFetchingPhotos && $setup.photos.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 0
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.photos, function (photo) {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.photos, function (photo) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_card, {
       key: photo.id,
-      photo: photo
+      photo: photo,
+      showLikeButton: !$setup.showOnlyFavoriteImages
     }, null, 8
     /* PROPS */
-    , ["photo"]);
+    , ["photo", "showLikeButton"]);
   }), 128
   /* KEYED_FRAGMENT */
-  ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_pagination, {
+  ))]), !$setup.showOnlyFavoriteImages ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_pagination, {
     modelValue: $setup.start,
-    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
       return $setup.start = $event;
     }),
     "total-items": $setup.totalPhotosCount,
@@ -752,9 +805,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "range-size": 1
   }, null, 8
   /* PROPS */
-  , ["modelValue", "total-items", "pages"])])], 64
+  , ["modelValue", "total-items", "pages"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 64
   /* STABLE_FRAGMENT */
-  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), !$setup.isFetchingPhotos && $setup.photos.length === 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_11, _hoisted_13)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.isFetchingPhotos ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_loading, {
+  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), !$setup.isFetchingPhotos && $setup.photos.length === 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_15, _hoisted_17)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.isFetchingPhotos ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_loading, {
     "class": "w-10 h-10"
   })])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 64
   /* STABLE_FRAGMENT */
@@ -784,7 +837,7 @@ var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 );
 
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-  "class": "text-center my-2"
+  "class": "text-center my-2 mb-4"
 }, "Users who liked most images this week", -1
 /* HOISTED */
 );
@@ -840,9 +893,13 @@ var _hoisted_2 = {
   "class": "grid gap-8 justify-center boothcards-grid px-4 mx-auto pb-16"
 };
 var _hoisted_3 = {
+  key: 0,
+  "class": "text-center font-bold mt-4"
+};
+var _hoisted_4 = {
   "class": "flex items-center justify-center"
 };
-var _hoisted_4 = ["disabled"];
+var _hoisted_5 = ["disabled"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_card = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("card");
 
@@ -855,7 +912,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     , ["photo"]);
   }), 128
   /* KEYED_FRAGMENT */
-  ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [$setup.metaData && $setup.metaData.current_page < $setup.metaData.total_pages ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+  ))]), !$setup.fetching && $setup.images.length === 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_3, "No records found...!")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [$setup.metaData && $setup.metaData.current_page < $setup.metaData.total_pages ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
     key: 0,
     type: "button",
     onClick: _cache[0] || (_cache[0] = function () {
@@ -865,7 +922,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "text-center px-4 py-2 bg-gray-900 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ml-3 disabled:opacity-50 disabled:cursor-not-allowed"
   }, " Load More ", 8
   /* PROPS */
-  , _hoisted_4)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])], 64
+  , _hoisted_5)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])], 64
   /* STABLE_FRAGMENT */
   );
 }
@@ -906,18 +963,18 @@ var _hoisted_5 = {
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _$props$photo$title;
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [$setup.isAuthenticated ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [$setup.isAuthenticated && $setup.favoriteImageIds && $props.showLikeButton ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
     key: 0,
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["ml-auto", {
       'opacity-25 cursor-not-allowed': $setup.loading
     }])
-  }, [$setup.getFavoriteImageIds[$props.photo.id] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("i", {
+  }, [$setup.favoriteImageIds[$props.photo.id] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("i", {
     key: 0,
     "class": "fas fa-heart cursor-pointer",
     onClick: _cache[0] || (_cache[0] = function ($event) {
       return $setup.toggleFavoriteImage($props.photo.id);
     })
-  })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), !$setup.getFavoriteImageIds[$props.photo.id] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("i", {
+  })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), !$setup.favoriteImageIds[$props.photo.id] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("i", {
     key: 1,
     "class": "far fa-heart cursor-pointer",
     onClick: _cache[1] || (_cache[1] = function ($event) {
@@ -1069,7 +1126,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 var favoriteImages = function favoriteImages() {
   var errors = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(null);
   var loading = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(false);
-  var getFavoriteImageIds = (0,vue__WEBPACK_IMPORTED_MODULE_1__.computed)(function () {
+  var favoriteImageIds = (0,vue__WEBPACK_IMPORTED_MODULE_1__.computed)(function () {
     return _stores__WEBPACK_IMPORTED_MODULE_2__["default"].getters.favorite_image_ids;
   });
 
@@ -1090,7 +1147,7 @@ var favoriteImages = function favoriteImages() {
 
             case 4:
               response = _context.sent;
-              updatedImageIds = _objectSpread({}, getFavoriteImageIds.value);
+              updatedImageIds = _objectSpread({}, favoriteImageIds.value);
 
               if (response.data.favorite) {
                 updatedImageIds[imageId] = imageId;
@@ -1129,7 +1186,7 @@ var favoriteImages = function favoriteImages() {
   return {
     loading: loading,
     errors: errors,
-    getFavoriteImageIds: getFavoriteImageIds,
+    favoriteImageIds: favoriteImageIds,
     toggleFavoriteImage: toggleFavoriteImage
   };
 };
@@ -1156,6 +1213,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _stores__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../stores */ "./resources/js/stores/index.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -1164,16 +1222,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
+
 var getPhotos = function getPhotos() {
   var photos = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)([]);
   var isFetchingPhotos = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(true);
+  var showOnlyFavoriteImages = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(false);
   var totalPhotosCount = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(0);
+  var favoriteImageIds = (0,vue__WEBPACK_IMPORTED_MODULE_1__.computed)(function () {
+    return _stores__WEBPACK_IMPORTED_MODULE_3__["default"].getters.favorite_image_ids;
+  });
 
   var fetchPhotos = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(start, limit) {
       var searchText,
+          url,
+          _favoriteImageIds,
+          favoriteImageIdsQueryString,
           response,
           _args = arguments;
+
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
@@ -1181,32 +1248,59 @@ var getPhotos = function getPhotos() {
               searchText = _args.length > 2 && _args[2] !== undefined ? _args[2] : '';
               _context.prev = 1;
               isFetchingPhotos.value = true;
-              _context.next = 5;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().get("https://jsonplaceholder.typicode.com/photos?_page=".concat(start, "&_limit=").concat(limit, "&q=").concat(searchText));
+              url = "https://jsonplaceholder.typicode.com/photos?_page=".concat(start, "&_limit=").concat(limit, "&q=").concat(searchText);
 
-            case 5:
+              if (!showOnlyFavoriteImages.value) {
+                _context.next = 12;
+                break;
+              }
+
+              _favoriteImageIds = (_stores__WEBPACK_IMPORTED_MODULE_3__["default"] === null || _stores__WEBPACK_IMPORTED_MODULE_3__["default"] === void 0 ? void 0 : _stores__WEBPACK_IMPORTED_MODULE_3__["default"].getters.favorite_image_ids) == null ? [] : Object.keys(_stores__WEBPACK_IMPORTED_MODULE_3__["default"].getters.favorite_image_ids);
+
+              if (!(_favoriteImageIds.length === 0)) {
+                _context.next = 9;
+                break;
+              }
+
+              photos.value = [];
+              return _context.abrupt("return");
+
+            case 9:
+              favoriteImageIdsQueryString = '';
+
+              _favoriteImageIds.forEach(function (id) {
+                favoriteImageIdsQueryString += "id=".concat(id, "&");
+              });
+
+              url = "https://jsonplaceholder.typicode.com/photos?q=".concat(searchText, "&").concat(favoriteImageIdsQueryString);
+
+            case 12:
+              _context.next = 14;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().get(url);
+
+            case 14:
               response = _context.sent;
               photos.value = response.data;
               totalPhotosCount.value = parseInt(response.headers['x-total-count']);
-              _context.next = 13;
+              _context.next = 22;
               break;
 
-            case 10:
-              _context.prev = 10;
+            case 19:
+              _context.prev = 19;
               _context.t0 = _context["catch"](1);
               console.log(_context.t0);
 
-            case 13:
-              _context.prev = 13;
+            case 22:
+              _context.prev = 22;
               isFetchingPhotos.value = false;
-              return _context.finish(13);
+              return _context.finish(22);
 
-            case 16:
+            case 25:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[1, 10, 13, 16]]);
+      }, _callee, null, [[1, 19, 22, 25]]);
     }));
 
     return function fetchPhotos(_x, _x2) {
@@ -1217,6 +1311,7 @@ var getPhotos = function getPhotos() {
   return {
     photos: photos,
     totalPhotosCount: totalPhotosCount,
+    showOnlyFavoriteImages: showOnlyFavoriteImages,
     fetchPhotos: fetchPhotos,
     isFetchingPhotos: isFetchingPhotos
   };
@@ -1373,7 +1468,9 @@ var latestFavoriteImages = function latestFavoriteImages() {
       fetchJsonPlaceHolderPhotosByIds = _getJsonPlaceHolderPh.fetchJsonPlaceHolderPhotosByIds;
 
   var images = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)([]);
-  var favoriteImageIdsQueryString = '';
+  var favoriteImageIdsQueryString = 'id=-1&';
+  /* by default -1 to handle stop fetching all the images if no data is present*/
+
   var errors = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(null);
   var fetching = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(false);
   var alreadyAddedIdsToString = new Set();

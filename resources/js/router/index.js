@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+import {JsonPlaceHolderApiDefaultValues} from "~/constants";
 import {isAuthenticated} from "../composables/auth";
 
 const router = createRouter({
@@ -11,9 +12,9 @@ const router = createRouter({
             meta: {meta_title: 'Home'},
             props: route => (
                 {
-                    start: route.query.start ? parseInt(route.query.start): 1,
-                    limit: route.query.limit ? parseInt(route.query.limit) : 10,
-                    search: route.query.search ?? ''
+                    start: route.query.start ? parseInt(route.query.start): JsonPlaceHolderApiDefaultValues.START,
+                    limit: route.query.limit ? parseInt(route.query.limit) : JsonPlaceHolderApiDefaultValues.LIMIT,
+                    search: route.query.search ?? JsonPlaceHolderApiDefaultValues.SEARCH
                 })
         },
         {

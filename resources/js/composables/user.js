@@ -33,7 +33,7 @@ export const latestFavoriteImages = () => {
     const metaData = ref(null);
     const {fetchJsonPlaceHolderPhotosByIds} = getJsonPlaceHolderPhotosByIds();
     const images = ref([]);
-    let favoriteImageIdsQueryString = '';
+    let favoriteImageIdsQueryString = 'id=-1&'; /* by default -1 to handle stop fetching all the images if no data is present*/
     const errors = ref(null);
     const fetching = ref(false);
     const alreadyAddedIdsToString = new Set(); /*remove duplicates from query string*/

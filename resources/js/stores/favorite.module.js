@@ -11,7 +11,7 @@ export const actions = {
                 const arrayValuesToObjectKeys = response.data.favorite_image_ids.reduce((favorites, favorite) => {
                     favorites[favorite.image_id] = favorite.image_id;
                     return favorites;
-                }, {});
+                }, {}) ?? {};
                 context.commit('updateFavoriteImageIds', arrayValuesToObjectKeys);
             })
             .catch((error) => {

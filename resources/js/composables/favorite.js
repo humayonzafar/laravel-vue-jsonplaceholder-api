@@ -5,12 +5,12 @@ import api from "~/utils/api";
 export const favoriteImages = () => {
     const errors = ref(null);
     const loading = ref(false);
-    const getFavoriteImageIds = computed(() => store.getters['favorite_image_ids']);
+    const favoriteImageIds = computed(() => store.getters['favorite_image_ids']);
     const toggleFavoriteImage = async (imageId) => {
         loading.value = true;
         try {
             const response = await api.post("/api/user/toggleFavoriteImage", {image_id: imageId});
-            let updatedImageIds = {...getFavoriteImageIds.value};
+            let updatedImageIds = {...favoriteImageIds.value};
             if (response.data.favorite) {
                 updatedImageIds[imageId] = imageId;
             } else {
@@ -25,7 +25,7 @@ export const favoriteImages = () => {
         }
     }
 
-    return {loading, errors, getFavoriteImageIds, toggleFavoriteImage};
+    return {loading, errors, favoriteImageIds, toggleFavoriteImage};
 }
 
 export const fetchUserFavoriteImages = () => {

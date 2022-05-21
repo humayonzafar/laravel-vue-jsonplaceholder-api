@@ -7,6 +7,8 @@
       <card :photo="image"/>
     </template>
   </div>
+  <p v-if="!fetching && images.length===0"
+     class="text-center font-bold mt-4">No records found...!</p>
   <div class="flex items-center justify-center ">
     <button type="button"
             v-if="metaData && metaData.current_page < metaData.total_pages"

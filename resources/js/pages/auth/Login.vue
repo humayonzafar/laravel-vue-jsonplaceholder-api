@@ -5,12 +5,12 @@
     <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden rounded-lg">
       <form @submit.prevent="login">
         <div>
-          <label class="block font-medium text-sm text-gray-500" for="email">
+          <label class="block font-medium text-sm" for="email">
             Email
           </label>
           <input v-model="formData.email"
                  @blur="v$.formData.email.$touch()"
-                 class="p-2 rounded-md shadow-sm bg-white border border-gray-300 text-gray-400 block mt-1 w-full"
+                 class="p-2 rounded-md shadow-sm bg-white border border-gray-300 block mt-1 w-full"
                  :class="{ 'border-red-500': v$.formData.email.$error }"
                  autocomplete="on"
                  id="email" type="email" name="email" autofocus="autofocus">
@@ -19,12 +19,12 @@
           </div>
         </div>
         <div class="mt-4">
-          <label class="block font-medium text-sm text-gray-500" for="password">
+          <label class="block font-medium text-sm" for="password">
             Password
           </label>
           <input v-model="formData.password"
                  id="password" type="password" name="password" autocomplete="current-password"
-                 class="p-2 rounded-md shadow-sm bg-white border border-gray-300 text-gray-400 focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50 block mt-1 w-full"
+                 class="p-2 rounded-md shadow-sm bg-white border border-gray-300 focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50 block mt-1 w-full"
                  @blur="v$.formData.password.$touch()"
                  :class="{ 'border-red-500': v$.formData.password.$error }"
           >
@@ -44,9 +44,6 @@
           </label>
         </div>
         <div class="flex items-center justify-end mt-4">
-<!--          <router-link class="underline text-sm text-gray-500 hover:text-gray-200" :to="{name: 'ForgotPassword'}">-->
-<!--            Forgot your password?-->
-<!--          </router-link>-->
           <button type="submit"
                   class="inline-flex items-center px-4 py-2 bg-gray-900 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ml-3 disabled:opacity-50 disabled:cursor-not-allowed"
                   :disabled="disableSubmitButton"

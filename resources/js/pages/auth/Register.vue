@@ -9,7 +9,7 @@
           </label>
           <input v-model="formData.name"
                  @blur="v$.formData.name.$touch()"
-                 class="p-2 rounded-md shadow-sm bg-white border border-gray-300 text-gray-400 block mt-1 w-full"
+                 class="p-2 rounded-md shadow-sm bg-white border border-gray-300 block mt-1 w-full"
                  id="name" type="text" name="name"
                  autofocus="autofocus"
                  :class="{ 'border-red-500': v$.formData.name.$error }">
@@ -23,7 +23,7 @@
           </label>
           <input v-model="formData.email"
                  @blur="v$.formData.email.$touch()"
-                 class="p-2 rounded-md shadow-sm bg-white border border-gray-300 text-gray-400 block mt-1 w-full"
+                 class="p-2 rounded-md shadow-sm bg-white border border-gray-300 block mt-1 w-full"
                  id="email" type="email" name="email" autofocus="autofocus"
                  :class="{ 'border-red-500': v$.formData.email.$error }">
           <div v-if="v$.formData.email.$error" class="text-red-500 font-semibold text-xs mt-2">
@@ -36,7 +36,7 @@
           </label>
           <input v-model="formData.password"
                  @blur="v$.formData.password.$touch()"
-                 class="p-2 rounded-md shadow-sm bg-white border border-gray-300 text-gray-400 focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50 block mt-1 w-full"
+                 class="p-2 rounded-md shadow-sm bg-white border border-gray-300 focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50 block mt-1 w-full"
                  id="password"
                  type="password"
                  name="password" autocomplete="current-password"
@@ -52,7 +52,7 @@
           <input
             v-model="formData.password_confirmation"
             @blur="v$.formData.password_confirmation.$touch()"
-            class="p-2 rounded-md shadow-sm bg-white border border-gray-300 text-gray-400 focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50 block mt-1 w-full"
+            class="p-2 rounded-md shadow-sm bg-white border border-gray-300 focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50 block mt-1 w-full"
             id="password_confirmation"
             type="password"
             name="password_confirmation"

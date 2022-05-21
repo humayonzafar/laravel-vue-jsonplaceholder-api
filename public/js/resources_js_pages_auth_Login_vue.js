@@ -112,7 +112,7 @@ var _hoisted_2 = {
 };
 
 var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "block font-medium text-sm text-gray-500",
+  "class": "block font-medium text-sm",
   "for": "email"
 }, " Email ", -1
 /* HOISTED */
@@ -133,7 +133,7 @@ var _hoisted_7 = {
 };
 
 var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "block font-medium text-sm text-gray-500",
+  "class": "block font-medium text-sm",
   "for": "password"
 }, " Password ", -1
 /* HOISTED */
@@ -195,7 +195,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onBlur: _cache[1] || (_cache[1] = function ($event) {
       return $setup.v$.formData.email.$touch();
     }),
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["p-2 rounded-md shadow-sm bg-white border border-gray-300 text-gray-400 block mt-1 w-full", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["p-2 rounded-md shadow-sm bg-white border border-gray-300 block mt-1 w-full", {
       'border-red-500': $setup.v$.formData.email.$error
     }]),
     autocomplete: "on",
@@ -213,7 +213,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     type: "password",
     name: "password",
     autocomplete: "current-password",
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["p-2 rounded-md shadow-sm bg-white border border-gray-300 text-gray-400 focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50 block mt-1 w-full", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["p-2 rounded-md shadow-sm bg-white border border-gray-300 focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50 block mt-1 w-full", {
       'border-red-500': $setup.v$.formData.password.$error
     }]),
     onBlur: _cache[3] || (_cache[3] = function ($event) {
@@ -233,7 +233,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     name: "remember"
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $setup.formData.remember]]), _hoisted_15])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("          <router-link class=\"underline text-sm text-gray-500 hover:text-gray-200\" :to=\"{name: 'ForgotPassword'}\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("            Forgot your password?"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("          </router-link>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $setup.formData.remember]]), _hoisted_15])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "submit",
     "class": "inline-flex items-center px-4 py-2 bg-gray-900 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ml-3 disabled:opacity-50 disabled:cursor-not-allowed",
     disabled: $setup.disableSubmitButton

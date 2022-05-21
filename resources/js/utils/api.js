@@ -21,7 +21,6 @@ const api = axios.create({
 api.interceptors.response.use(
     res => res,
     err => {
-        console.log(err, isAuthenticated.value, err.response.status === 401 && isAuthenticated.value);
         if (err.response.status === 401 && isAuthenticated.value) {
             store.dispatch('logout');
         }

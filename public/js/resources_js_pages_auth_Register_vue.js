@@ -225,7 +225,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onBlur: _cache[1] || (_cache[1] = function ($event) {
       return $setup.v$.formData.name.$touch();
     }),
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["p-2 rounded-md shadow-sm bg-white border border-gray-300 text-gray-400 block mt-1 w-full", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["p-2 rounded-md shadow-sm bg-white border border-gray-300 block mt-1 w-full", {
       'border-red-500': $setup.v$.formData.name.$error
     }]),
     id: "name",
@@ -241,7 +241,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onBlur: _cache[3] || (_cache[3] = function ($event) {
       return $setup.v$.formData.email.$touch();
     }),
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["p-2 rounded-md shadow-sm bg-white border border-gray-300 text-gray-400 block mt-1 w-full", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["p-2 rounded-md shadow-sm bg-white border border-gray-300 block mt-1 w-full", {
       'border-red-500': $setup.v$.formData.email.$error
     }]),
     id: "email",
@@ -257,7 +257,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onBlur: _cache[5] || (_cache[5] = function ($event) {
       return $setup.v$.formData.password.$touch();
     }),
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["p-2 rounded-md shadow-sm bg-white border border-gray-300 text-gray-400 focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50 block mt-1 w-full", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["p-2 rounded-md shadow-sm bg-white border border-gray-300 focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50 block mt-1 w-full", {
       'border-red-500': $setup.v$.formData.password.$error
     }]),
     id: "password",
@@ -273,7 +273,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onBlur: _cache[7] || (_cache[7] = function ($event) {
       return $setup.v$.formData.password_confirmation.$touch();
     }),
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["p-2 rounded-md shadow-sm bg-white border border-gray-300 text-gray-400 focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50 block mt-1 w-full", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["p-2 rounded-md shadow-sm bg-white border border-gray-300 focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50 block mt-1 w-full", {
       'border-red-500': $setup.v$.formData.password_confirmation.$error
     }]),
     id: "password_confirmation",

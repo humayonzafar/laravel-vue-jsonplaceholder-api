@@ -22762,6 +22762,25 @@ var getUserProfile = (0,vue__WEBPACK_IMPORTED_MODULE_1__.computed)(function () {
 
 /***/ }),
 
+/***/ "./resources/js/constants/index.js":
+/*!*****************************************!*\
+  !*** ./resources/js/constants/index.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "JsonPlaceHolderApiDefaultValues": () => (/* binding */ JsonPlaceHolderApiDefaultValues)
+/* harmony export */ });
+var JsonPlaceHolderApiDefaultValues = {
+  START: 1,
+  LIMIT: 10,
+  SEARCH: ''
+};
+
+/***/ }),
+
 /***/ "./resources/js/router/index.js":
 /*!**************************************!*\
   !*** ./resources/js/router/index.js ***!
@@ -22773,12 +22792,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
-/* harmony import */ var _composables_auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../composables/auth */ "./resources/js/composables/auth.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./resources/js/constants/index.js");
+/* harmony import */ var _composables_auth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../composables/auth */ "./resources/js/composables/auth.js");
 
 
-var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_1__.createRouter)({
-  history: (0,vue_router__WEBPACK_IMPORTED_MODULE_1__.createWebHistory)(),
+
+var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_2__.createRouter)({
+  history: (0,vue_router__WEBPACK_IMPORTED_MODULE_2__.createWebHistory)(),
   routes: [{
     path: '/',
     name: 'Home',
@@ -22792,9 +22813,9 @@ var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_1__.createRouter)({
       var _route$query$search;
 
       return {
-        start: route.query.start ? parseInt(route.query.start) : 1,
-        limit: route.query.limit ? parseInt(route.query.limit) : 10,
-        search: (_route$query$search = route.query.search) !== null && _route$query$search !== void 0 ? _route$query$search : ''
+        start: route.query.start ? parseInt(route.query.start) : _constants__WEBPACK_IMPORTED_MODULE_0__.JsonPlaceHolderApiDefaultValues.START,
+        limit: route.query.limit ? parseInt(route.query.limit) : _constants__WEBPACK_IMPORTED_MODULE_0__.JsonPlaceHolderApiDefaultValues.LIMIT,
+        search: (_route$query$search = route.query.search) !== null && _route$query$search !== void 0 ? _route$query$search : _constants__WEBPACK_IMPORTED_MODULE_0__.JsonPlaceHolderApiDefaultValues.SEARCH
       };
     }
   }, {
@@ -22826,11 +22847,11 @@ var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_1__.createRouter)({
   }]
 });
 router.beforeEach(function (to, from, next) {
-  if (to.meta.requiresAuth && !_composables_auth__WEBPACK_IMPORTED_MODULE_0__.isAuthenticated.value) {
+  if (to.meta.requiresAuth && !_composables_auth__WEBPACK_IMPORTED_MODULE_1__.isAuthenticated.value) {
     next({
       name: "Login"
     });
-  } else if (to.meta.isGuest && _composables_auth__WEBPACK_IMPORTED_MODULE_0__.isAuthenticated.value) {
+  } else if (to.meta.isGuest && _composables_auth__WEBPACK_IMPORTED_MODULE_1__.isAuthenticated.value) {
     next({
       name: "Home"
     });
@@ -22931,10 +22952,12 @@ var state = {
 };
 var actions = (_actions = {}, _defineProperty(_actions, 'get_favorite_image_ids', function get_favorite_image_ids(context) {
   _utils_api__WEBPACK_IMPORTED_MODULE_0__["default"].get('api/user/getFavoritesImageIds').then(function (response) {
-    var arrayValuesToObjectKeys = response.data.favorite_image_ids.reduce(function (favorites, favorite) {
+    var _response$data$favori;
+
+    var arrayValuesToObjectKeys = (_response$data$favori = response.data.favorite_image_ids.reduce(function (favorites, favorite) {
       favorites[favorite.image_id] = favorite.image_id;
       return favorites;
-    }, {});
+    }, {})) !== null && _response$data$favori !== void 0 ? _response$data$favori : {};
     context.commit('updateFavoriteImageIds', arrayValuesToObjectKeys);
   })["catch"](function (error) {
     context.commit('updateFavoriteImageIds', {});
@@ -23024,8 +23047,6 @@ var api = axios__WEBPACK_IMPORTED_MODULE_0___default().create({
 api.interceptors.response.use(function (res) {
   return res;
 }, function (err) {
-  console.log(err, _composables_auth__WEBPACK_IMPORTED_MODULE_2__.isAuthenticated.value, err.response.status === 401 && _composables_auth__WEBPACK_IMPORTED_MODULE_2__.isAuthenticated.value);
-
   if (err.response.status === 401 && _composables_auth__WEBPACK_IMPORTED_MODULE_2__.isAuthenticated.value) {
     _stores__WEBPACK_IMPORTED_MODULE_1__["default"].dispatch('logout');
   }
