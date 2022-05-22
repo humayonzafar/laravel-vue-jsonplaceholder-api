@@ -7,7 +7,7 @@ const router = createRouter({
         {
             path: '/',
             name: 'Home',
-            component: () => import('../pages/Home'),
+            component: () => import('~/pages/Home'),
             meta: {meta_title: 'Home'},
             props: route => (
                 {
@@ -19,27 +19,15 @@ const router = createRouter({
         {
             path: '/login',
             name: 'Login',
-            component: () => import('../pages/auth/Login'),
+            component: () => import('~/pages/auth/Login'),
             meta: {meta_title: 'User Login', isGuest: true},
         },
         {
             path: '/register',
             name: 'Register',
-            component: () => import('../pages/auth/Register'),
+            component: () => import('~/pages/auth/Register'),
             meta: {meta_title: 'User Register', isGuest: true},
         },
-        // {
-        //     path: '/auth',
-        //     redirect: "/login",
-        //     component: Login,
-        //     meta: { isGuest: true },
-        //     children: [
-        //         { path: "/register", name: 'Register', component: Register },
-        //         { path: "/login", name: 'Login', component: Login },
-        //         { path: "/forgot-password", name: 'ForgotPassword', component: ForgotPassword },
-        //         { path: "/reset-password/:token", name: 'ResetPassword', component: ResetPassword }
-        //     ]
-        // },
         {
             path: '/:pathMatch(.*)*',
             name: '404',
@@ -52,7 +40,6 @@ router.beforeEach((to, from, next) => {
     if(to.meta.requiresAuth && !isAuthenticated.value) {
         next({name: "Login"})
     } else if(to.meta.isGuest && isAuthenticated.value) {
-        console.log(to.meta.isGuest, isAuthenticated.value)
         next({name: "Home"})
     } else {
         next();

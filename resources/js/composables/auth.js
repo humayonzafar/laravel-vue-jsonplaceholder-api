@@ -1,10 +1,9 @@
 import {ref, computed} from "vue";
 import {required, email, minLength, sameAs} from "@vuelidate/validators";
 import useVuelidate from "@vuelidate/core";
-import authService from "../services/authService";
 import store from '@/js/stores';
-import router from "../router";
-import api from "../utils/api";
+import router from "~/router";
+import api from "~/utils/api";
 
 export const authLogin = () => {
     const formData = ref({

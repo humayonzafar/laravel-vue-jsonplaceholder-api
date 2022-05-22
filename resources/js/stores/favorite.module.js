@@ -1,4 +1,4 @@
-import api from "../utils/api";
+import api from "~/utils/api";
 
 export const state = {
     favoriteImageIds: {},
@@ -6,14 +6,13 @@ export const state = {
 
 export const actions = {
     ['get_favorite_image_ids'](context) {
-        return api.get('api/user/getFavoritesImageIds')
+        api.get('api/user/getFavoritesImageIds')
             .then((response) => {
-                const arrayValuesToObjectKeys = response.data.favorites.reduce((favorites, favorite) => {
-                    favorites[favorite] = favorite;
+                const arrayValuesToObjectKeys = response.data.favorite_image_ids.reduce((favorites, favorite) => {
+                    favorites[favorite.image_id] = favorite.image_id;
                     return favorites;
                 }, {});
                 context.commit('updateFavoriteImageIds', arrayValuesToObjectKeys);
-                console.log(response.data.favorites);
             })
             .catch((error) => {
                 context.commit('updateFavoriteImageIds', {});
@@ -21,7 +20,6 @@ export const actions = {
             })
     },
     ['sync_favorite_image_ids'](context, favoriteImageIds) {
-        console.log(favoriteImageIds,'favoriteImageIds store');
         context.commit('updateFavoriteImageIds', favoriteImageIds);
     },
 };

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class FavoriteImage extends Model
+class UserImage extends Model
 {
     use HasFactory;
 
@@ -15,7 +15,7 @@ class FavoriteImage extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = ['image_id', 'is_liked'];
+    protected $fillable = ['image_id', 'is_favorite'];
 
     /**
      * A favorite belongs to a user.

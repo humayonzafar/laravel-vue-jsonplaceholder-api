@@ -66,8 +66,8 @@
 </template>
 
 <script>
-import Logo from '@/js/components/Logo';
-import {authLogin} from "../../composables/auth";
+import Logo from '~/components/Logo';
+import {authLogin} from "~/composables/auth";
 
 export default {
   name: "Login",

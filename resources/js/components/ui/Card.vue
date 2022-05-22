@@ -1,22 +1,21 @@
 <template>
   <div class="flex flex-col border items-start shadow-md group hover:shadow-xl p-4">
     <div class="ml-auto" v-if="isAuthenticated" :class="{'opacity-25 cursor-not-allowed': loading}">
-      <i class="fas fa-heart cursor-pointer" v-if="getFavoriteImageIds[photo.id]" @click="syncUserFavoriteImage(photo.id)"/>
-      <i class="far fa-heart cursor-pointer" v-if="!getFavoriteImageIds[photo.id]" @click="syncUserFavoriteImage(photo.id)"/>
+      <i class="fas fa-heart cursor-pointer" v-if="getFavoriteImageIds[photo.id]" @click="toggleFavoriteImage(photo.id)"/>
+      <i class="far fa-heart cursor-pointer" v-if="!getFavoriteImageIds[photo.id]" @click="toggleFavoriteImage(photo.id)"/>
     </div>
     <div class="flex-none w-full aspect-w-16 aspect-h-9 overflow-hidden card-height">
         <img :src="photo.thumbnailUrl" class="w-full h-full object-cover object-center transform group-hover:scale-105 transition-all duration-500 ease-in-out border-b border-gray-300" alt="'image'"/>
     </div>
     <div class="p-2 w-full">
-     <p class="text-md text-gray-600 leading-4 text-center">{{photo.title || ''}}</p>
+     <p class="text-md text-gray-600 leading-4 text-center">{{photo.title ?? ''}}</p>
     </div>
   </div>
 </template>
 
 <script>
-import {ref} from "vue";
-import {isAuthenticated} from "../../composables/auth";
-import {favoriteImages} from "../../composables/favorites";
+import {isAuthenticated} from "~/composables/auth";
+import {favoriteImages} from "~/composables/favorite";
 
 export default {
   name: "Card",
@@ -27,10 +26,10 @@ export default {
     }
   },
   components: {},
-  setup(props) {
-    const {getFavoriteImageIds, loading, syncUserFavoriteImage} = favoriteImages();
+  setup() {
+    const {getFavoriteImageIds, loading, toggleFavoriteImage} = favoriteImages();
 
-    return {isAuthenticated, loading, getFavoriteImageIds, syncUserFavoriteImage}
+    return {isAuthenticated, loading, getFavoriteImageIds, toggleFavoriteImage}
   },
 }
 </script>

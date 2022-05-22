@@ -1,6 +1,6 @@
 import {createStore} from "vuex";
-import auth from "@/js/stores/auth.module";
-import favorite from "@/js/stores/favorite.module";
+import auth from "~/stores/auth.module";
+import favorite from "~/stores/favorite.module";
 
 const store = createStore({
     modules: {

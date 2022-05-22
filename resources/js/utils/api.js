@@ -1,6 +1,6 @@
 import axios from "axios";
-import store from "../stores";
-import {isAuthenticated} from "../composables/auth";
+import store from "~/stores";
+import {isAuthenticated} from "~/composables/auth";
 
 const api = axios.create({
     headers: {

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\UserCollection;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Carbon\Carbon;
@@ -29,13 +30,14 @@ class UserController extends Controller
     {
         $users = User::query()
             ->selectRaw('users.*, count(*) as favorites_images_count_current_week')
-            ->join('favorite_images', 'favorite_images.user_id', 'users.id')
-            ->where('favorite_images.is_liked', true)
-            ->whereBetween('favorite_images.created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
-            ->groupBy('favorite_images.user_id')
+            ->join('user_images', 'user_images.user_id', 'users.id')
+            ->where('user_images.is_favorite', true)
+            ->whereBetween('user_images.updated_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
+            ->groupBy('user_images.user_id')
+            ->orderBy('favorites_images_count_current_week', 'DESC')
             ->paginate(10);
 
-        return response()->json(['users' => UserResource::collection($users)], 200);
+        return response()->json(['users' => new UserCollection($users)], 200);
     }
 
 }

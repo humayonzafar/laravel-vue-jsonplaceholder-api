@@ -1,7 +1,7 @@
-import api from "../utils/api";
+import api from "~/utils/api";
 
 export const state = {
-    user: JSON.parse(localStorage.getItem('user')) || null,
+    user: JSON.parse(localStorage.getItem('user')) || null
 };
 
 export const actions = {
@@ -9,25 +9,25 @@ export const actions = {
         context.commit('updateUser', user);
     },
     ['get_auth_user'](context) {
-       return api.get('api/user/auth')
+        return api.get('api/user/auth')
             .then((response) => {
-                console.log(response.data);
                 context.commit('updateUser', response.data.user);
                 localStorage.setItem('user', JSON.stringify(response.data.user));
                 return response
             })
             .catch((error) => {
                 context.commit('updateUser', null);
-                return error
+                return error;
             })
     },
     ['logout'](context) {
         return api.post('/logout')
             .then((response) => {
-                console.log(response,'logout response');
                 context.commit('logoutUser');
             })
-            .catch((error) => {})
+            .catch((error) => {
+                console.log(error)
+            })
     },
 };
 
@@ -43,7 +43,7 @@ export const mutations = {
 
 export const getters = {
     ['user'](state) {
-        return state.user
+        return state.user;
     }
 };
 

@@ -1,5 +1,6 @@
 const mix = require('laravel-mix');
 const Dotenv = require('dotenv-webpack');
+const path = require('path');
 
 mix.webpackConfig({
     watchOptions: {
@@ -8,7 +9,8 @@ mix.webpackConfig({
     resolve: {
         extensions: ['.js', '.vue'],
         alias: {
-            '@': __dirname + '/resources'
+            '@': path.join(__dirname, './resources'),
+            '~': path.join(__dirname, './resources/js')
         }
     },
     plugins: [

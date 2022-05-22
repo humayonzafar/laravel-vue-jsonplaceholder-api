@@ -1,32 +1,34 @@
 {
-    "private": true,
-    "scripts": {
-        "dev": "npm run development",
-        "development": "mix",
-        "watch": "mix watch",
-        "watch-poll": "mix watch -- --watch-options-poll=1000",
-        "hot": "mix watch --hot",
-        "prod": "npm run production",
-        "production": "mix --production"
-    },
-    "devDependencies": {
-        "autoprefixer": "^10.4.4",
-        "axios": "^0.27.2",
-        "laravel-mix": "^6.0.6",
-        "postcss": "^8.4.12",
-        "tailwindcss": "^3.0.12",
-        "vue": "^3.2.31",
-        "vue-loader": "^16.2.0",
-        "vue-router": "^4.0.14",
-        "vuex": "^4.0.2"
-    },
-    "dependencies": {
-        "@headlessui/vue": "^1.6.2",
-        "@hennge/vue3-pagination": "^1.0.17",
-        "@heroicons/vue": "^1.0.6",
-        "@vuelidate/core": "^2.0.0-alpha.41",
-        "@vuelidate/validators": "^2.0.0-alpha.29",
-        "dotenv-webpack": "^7.1.0",
-        "vue-debounce": "^4.0.0"
-    }
+  "private": true,
+  "scripts": {
+    "dev": "npm run development",
+    "development": "mix",
+    "watch": "mix watch",
+    "watch-poll": "mix watch -- --watch-options-poll=1000",
+    "hot": "mix watch --hot",
+    "prod": "npm run production",
+    "production": "mix --production",
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.18.0",
+    "autoprefixer": "^10.4.4",
+    "axios": "^0.27.2",
+    "laravel-mix": "^6.0.6",
+    "postcss": "^8.4.12",
+    "tailwindcss": "^3.0.12",
+    "vue": "^3.2.31",
+    "vue-loader": "^16.2.0",
+    "vue-router": "^4.0.14",
+    "vuex": "^4.0.2"
+  },
+  "dependencies": {
+    "@hennge/vue3-pagination": "^1.0.17",
+    "@vue/test-utils": "^2.0.0",
+    "@vuelidate/core": "^2.0.0-alpha.41",
+    "@vuelidate/validators": "^2.0.0-alpha.29",
+    "dotenv-webpack": "^7.1.0",
+    "vue-debounce": "^4.0.0",
+    "vue3-table-lite": "^1.2.1"
+  }
 }

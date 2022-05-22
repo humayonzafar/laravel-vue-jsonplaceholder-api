@@ -41,7 +41,6 @@ export default {
       this.errors = null
       axios.post('/forgot-password', { email: this.email })
         .then((response) => {
-          console.log(response)
         })
         .catch((error) => {
           this.errors = error.response.data

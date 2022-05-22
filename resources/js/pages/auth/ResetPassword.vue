@@ -57,7 +57,6 @@ export default {
       this.errors = null
       axios.post('/reset-password', {...this.data, ...{token: this.$route.params.token}})
         .then((response) => {
-          console.log(response)
           router.push({name: 'Home'})
         })
         .catch((error) => {

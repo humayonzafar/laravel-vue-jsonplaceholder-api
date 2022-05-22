@@ -47,9 +47,9 @@ class User extends Authenticatable
      *
      * @return HasMany
      */
-    public function favoriteImages()
+    public function userImages()
     {
-        return $this->hasMany(FavoriteImage::class);
+        return $this->hasMany(UserImage::class);
     }
 
 }
