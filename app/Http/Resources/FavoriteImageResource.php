@@ -6,7 +6,7 @@ use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class UserResource extends JsonResource
+class FavoriteImageResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -18,10 +18,8 @@ class UserResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
-            'email' => $this->email,
-            'favorite_images' => FavoriteImageResource::collection($this->whenLoaded('favorites')),
-            'favorites_images_count_current_week' => $this->when(isset($this->favorites_images_count_current_week), $this->favorites_images_count_current_week),
+            'user_id' => $this->user_id,
+            'image_id' => $this->image_id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at
         ];

@@ -6,18 +6,14 @@
       </router-link>
       <ul class="list flex items-center text-gray-500 text-sm font-semibold">
         <li>
-          <router-link :to="{name: 'Home'}" class="hover:text-gray-700 p-2 rounded flex items-center space-x-2">
-            <span>Home</span>
-          </router-link>
+          <p>{{getUserProfile?.name}}</p>
         </li>
-        <li>
-          <router-link :to="{name: 'User'}" class="hover:text-gray-700 p-2 rounded flex items-center space-x-2 font-semibold">
-            <span>{{ user?.name }}</span>
-          </router-link>
+        <li class="ml-4">
+          <p>{{getUserProfile?.email}}</p>
         </li>
         <li class="ml-4">
           <button @click="logout" class="hover:text-gray-700 p-2 rounded flex items-center space-x-2">
-            <span>logout</span>
+            <span>Logout</span>
           </button>
         </li>
       </ul>
@@ -26,19 +22,17 @@
 </template>
 
 <script>
+import store from '@/js/stores';
+import {getUserProfile} from "../../composables/auth";
+
 export default {
-  computed: {
-    user() {
-      return this.$store.getters.user
+  name: "AppAuthHeader",
+  setup() {
+    const logout = () => {
+      store.dispatch('logout');
     }
-  },
-  methods: {
-    logout() {
-      this.$store.dispatch('logout')
-        .then(() => {
-          this.$router.push({name: 'Login'})
-        })
-    }
+
+    return {logout, getUserProfile};
   }
 }
 </script>

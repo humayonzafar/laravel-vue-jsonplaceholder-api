@@ -1,4 +1,6 @@
 <template>
+  <AppAuthHeader v-if="isAuthenticated"/>
+  <GuestHeader v-if="!isAuthenticated"/>
   <router-view :key="$route.path"></router-view>
 </template>
 
@@ -6,8 +8,18 @@
 import axios from 'axios'
 import router from '@/js/router'
 import store from '@/js/stores'
+import AppAuthHeader from "../components/ui/AppAuthHeader";
+import GuestHeader from "../components/ui/GuestHeader";
+import {isAuthenticated} from "../composables/auth";
 
 export default {
+  name: 'App',
+  components:{AppAuthHeader, GuestHeader},
+  setup(){
+    store.dispatch("get_auth_user");
+
+    return {isAuthenticated};
+  },
   mounted() {
     axios.interceptors.response.use(function (response) {
       return response;
