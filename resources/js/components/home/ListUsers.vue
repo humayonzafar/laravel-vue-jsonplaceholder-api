@@ -1,6 +1,6 @@
 <template>
   <h1 class="w-full mt-2 text-2xl leading-7 text-gray-900 sm:text-3xl sm:truncate my-4 text-center">Users</h1>
-  <p class="text-center my-2">Most liked images by user this week</p>
+  <p class="text-center my-2">Users who liked most images this week</p>
   <table-lite
     :is-loading="loading"
     :columns="columns"

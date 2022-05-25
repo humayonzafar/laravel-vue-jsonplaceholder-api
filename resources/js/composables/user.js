@@ -50,7 +50,6 @@ export const latestFavoriteImages = () => {
             });
             const jsonPlaceholderImagesResponse = await fetchJsonPlaceHolderPhotosByIds(favoriteImageIdsQueryString);
             images.value = jsonPlaceholderImagesResponse.data;
-            console.log(favoriteImageIdsQueryString, jsonPlaceholderImagesResponse);
         } catch (error) {
             errors.value = error.response?.data;
             console.log(error, 'inside error', error.response);

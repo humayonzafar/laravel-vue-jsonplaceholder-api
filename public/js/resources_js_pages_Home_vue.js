@@ -315,15 +315,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-/* harmony import */ var _composables_jsonplaceholder__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ~/composables/jsonplaceholder */ "./resources/js/composables/jsonplaceholder.js");
-/* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ~/router */ "./resources/js/router/index.js");
-/* harmony import */ var _components_ui_Card__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ~/components/ui/Card */ "./resources/js/components/ui/Card.vue");
+/* harmony import */ var _composables_jsonplaceholder__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../composables/jsonplaceholder */ "./resources/js/composables/jsonplaceholder.js");
+/* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../router */ "./resources/js/router/index.js");
+/* harmony import */ var _ui_Card__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../ui/Card */ "./resources/js/components/ui/Card.vue");
 /* harmony import */ var _hennge_vue3_pagination__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @hennge/vue3-pagination */ "./node_modules/@hennge/vue3-pagination/dist/vue3-pagination.esm.js");
 /* harmony import */ var _hennge_vue3_pagination_dist_vue3_pagination_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @hennge/vue3-pagination/dist/vue3-pagination.css */ "./node_modules/@hennge/vue3-pagination/dist/vue3-pagination.css");
 /* harmony import */ var vue_debounce__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-debounce */ "./node_modules/vue-debounce/dist/vue-debounce.min.js");
 /* harmony import */ var vue_debounce__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(vue_debounce__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _components_utilities_Loading__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ~/components/utilities/Loading */ "./resources/js/components/utilities/Loading.vue");
-/* harmony import */ var _composables_favorite__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ~/composables/favorite */ "./resources/js/composables/favorite.js");
+/* harmony import */ var _utilities_Loading__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utilities/Loading */ "./resources/js/components/utilities/Loading.vue");
+/* harmony import */ var _composables_favorite__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../composables/favorite */ "./resources/js/composables/favorite.js");
 
 
 
@@ -348,8 +348,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   components: {
     VPagination: _hennge_vue3_pagination__WEBPACK_IMPORTED_MODULE_4__["default"],
-    Loading: _components_utilities_Loading__WEBPACK_IMPORTED_MODULE_7__["default"],
-    Card: _components_ui_Card__WEBPACK_IMPORTED_MODULE_3__["default"]
+    Loading: _utilities_Loading__WEBPACK_IMPORTED_MODULE_7__["default"],
+    Card: _ui_Card__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   setup: function setup(props) {
     var _props$search;
@@ -417,7 +417,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _composables_user__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ~/composables/user */ "./resources/js/composables/user.js");
+/* harmony import */ var _composables_user__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../composables/user */ "./resources/js/composables/user.js");
 /* harmony import */ var vue3_table_lite__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue3-table-lite */ "./node_modules/vue3-table-lite/index.js");
 
 
@@ -478,14 +478,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _composables_user__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ~/composables/user */ "./resources/js/composables/user.js");
-/* harmony import */ var _components_ui_Card__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ~/components/ui/Card */ "./resources/js/components/ui/Card.vue");
+/* harmony import */ var _composables_user__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../composables/user */ "./resources/js/composables/user.js");
+/* harmony import */ var _ui_Card__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../ui/Card */ "./resources/js/components/ui/Card.vue");
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "RegisteredUsersFavoriteImages",
   components: {
-    Card: _components_ui_Card__WEBPACK_IMPORTED_MODULE_1__["default"]
+    Card: _ui_Card__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   setup: function setup() {
     var _latestFavoriteImages = (0,_composables_user__WEBPACK_IMPORTED_MODULE_0__.latestFavoriteImages)(),
@@ -522,8 +522,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _composables_auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ~/composables/auth */ "./resources/js/composables/auth.js");
-/* harmony import */ var _composables_favorite__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ~/composables/favorite */ "./resources/js/composables/favorite.js");
+/* harmony import */ var _composables_auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../composables/auth */ "./resources/js/composables/auth.js");
+/* harmony import */ var _composables_favorite__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../composables/favorite */ "./resources/js/composables/favorite.js");
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -580,11 +580,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _components_home_JsonPlaceHolderImages__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ~/components/home/JsonPlaceHolderImages */ "./resources/js/components/home/JsonPlaceHolderImages.vue");
-/* harmony import */ var _composables_auth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ~/composables/auth */ "./resources/js/composables/auth.js");
-/* harmony import */ var _components_home_ListUsers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ~/components/home/ListUsers */ "./resources/js/components/home/ListUsers.vue");
+/* harmony import */ var _components_home_JsonPlaceHolderImages__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/home/JsonPlaceHolderImages */ "./resources/js/components/home/JsonPlaceHolderImages.vue");
+/* harmony import */ var _composables_auth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../composables/auth */ "./resources/js/composables/auth.js");
+/* harmony import */ var _components_home_ListUsers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/home/ListUsers */ "./resources/js/components/home/ListUsers.vue");
 /* harmony import */ var _components_home_RegisteredUsersFavoriteImages__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/home/RegisteredUsersFavoriteImages */ "./resources/js/components/home/RegisteredUsersFavoriteImages.vue");
-/* harmony import */ var _utils_commonMethods__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ~/utils/commonMethods */ "./resources/js/utils/commonMethods.js");
+/* harmony import */ var _utils_commonMethods__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/commonMethods */ "./resources/js/utils/commonMethods.js");
 
 
 
@@ -785,7 +785,7 @@ var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "text-center my-2"
-}, "Most liked images by user this week", -1
+}, "Users who liked most images this week", -1
 /* HOISTED */
 );
 
@@ -1049,8 +1049,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-/* harmony import */ var _stores__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ~/stores */ "./resources/js/stores/index.js");
-/* harmony import */ var _utils_api__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ~/utils/api */ "./resources/js/utils/api.js");
+/* harmony import */ var _stores__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../stores */ "./resources/js/stores/index.js");
+/* harmony import */ var _utils_api__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/api */ "./resources/js/utils/api.js");
 
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
@@ -1289,7 +1289,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var _jsonplaceholder__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./jsonplaceholder */ "./resources/js/composables/jsonplaceholder.js");
-/* harmony import */ var _utils_api__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ~/utils/api */ "./resources/js/utils/api.js");
+/* harmony import */ var _utils_api__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/api */ "./resources/js/utils/api.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -1413,27 +1413,26 @@ var latestFavoriteImages = function latestFavoriteImages() {
             case 10:
               jsonPlaceholderImagesResponse = _context2.sent;
               images.value = jsonPlaceholderImagesResponse.data;
-              console.log(favoriteImageIdsQueryString, jsonPlaceholderImagesResponse);
-              _context2.next = 19;
+              _context2.next = 18;
               break;
 
-            case 15:
-              _context2.prev = 15;
+            case 14:
+              _context2.prev = 14;
               _context2.t0 = _context2["catch"](2);
               errors.value = (_error$response2 = _context2.t0.response) === null || _error$response2 === void 0 ? void 0 : _error$response2.data;
               console.log(_context2.t0, 'inside error', _context2.t0.response);
 
-            case 19:
-              _context2.prev = 19;
+            case 18:
+              _context2.prev = 18;
               fetching.value = false;
-              return _context2.finish(19);
+              return _context2.finish(18);
 
-            case 22:
+            case 21:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[2, 15, 19, 22]]);
+      }, _callee2, null, [[2, 14, 18, 21]]);
     }));
 
     return function getLatestFavoriteImages() {

@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import store from '@/js/stores'
+import store from '~/stores';
 import AppAuthHeader from '~/components/ui/AppAuthHeader';
 import GuestHeader from "~/components/ui/GuestHeader";
 import {isAuthenticated} from "~/composables/auth";
