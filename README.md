@@ -30,6 +30,15 @@ Laravel/Vue tech stack.
 - Php unit tests
 
 ## Screenshots
+![Login_Page](https://res.cloudinary.com/humayoncloud/image/upload/v1653499924/sutdydrive/gallery_login_thkfrm.png)
+
+![Register Page](https://res.cloudinary.com/humayoncloud/image/upload/v1653499924/sutdydrive/gallery_register_htdam9.png)
+
+![Home Authenticated](https://res.cloudinary.com/humayoncloud/image/upload/v1653499925/sutdydrive/gallery_authenticated_o0nlzn.png)
+
+![Home Unauthenticated_Weekend](https://res.cloudinary.com/humayoncloud/image/upload/v1653499944/sutdydrive/gallery_weekend_o8crzu.png)
+
+![Home Unauthenticated_Non_Weekend](https://res.cloudinary.com/humayoncloud/image/upload/v1653499941/sutdydrive/gallery_home_page_non_weekend_o33kpz.png)
 
 ## Setup
 Clone the project using:
@@ -49,6 +58,9 @@ Next setup the env file DB_DATABASE, DB_USERNAME and DB_PASSWORD. Then run the f
 #### `npm run build`
 #### `php artisan serve`
 
+To create dummy data run:
+
+#### `php artisan db:seed`
 
 And voila, you are all set
 
