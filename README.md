@@ -40,6 +40,10 @@ Laravel/Vue tech stack.
 
 ![Home Unauthenticated_Non_Weekend](https://res.cloudinary.com/humayoncloud/image/upload/v1653499941/sutdydrive/gallery_home_page_non_weekend_o33kpz.png)
 
+#### Loom Video Links:
+https://www.loom.com/share/81a519bee7b647478936dcd9de1bcd77
+https://www.loom.com/share/5aabbcbe4a0a4456a28387c1761faa4f
+
 ## Setup
 Clone the project using:
 
@@ -55,14 +59,18 @@ Run the following commands to set the project:
 
 Next setup the env file DB_DATABASE, DB_USERNAME and DB_PASSWORD. Then run the following commands to run the project:
 
-#### `npm run build`
 #### `php artisan serve`
+
+Voila, you are all set.
 
 To create dummy data run:
 
 #### `php artisan db:seed`
 
-And voila, you are all set
+To run test:
+
+#### `vendor/bin/phpunit`
+#### `npm run test`
 
 ## Contact
 Created by [@humayonzafar](https://www.humayonzafar.com/contact) - feel free to contact me!
