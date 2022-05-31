@@ -10,8 +10,7 @@
 * [Contact](#contact)
 
 ## General Information
-This is built as an assessment assignment for StudyDrive recruitment process. It is built using the 
-Laravel/Vue tech stack.
+A gallery app which allows user ability to login/register. Mark images as favorite and remove them. Shows most liked images in current week and which users liked most images current week.
 
 ## Technologies Used
 - [Laravel 9](https://laravel.com/docs/9.x/releases)
